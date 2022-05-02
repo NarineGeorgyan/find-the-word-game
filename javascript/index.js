@@ -26,15 +26,15 @@ let isWin = false;
     const keyCell = document.createElement('button');
     keyCell.classList.add("btn-key");
     keyCell.innerText = val;
-    keyCell.setAttribute('id',val);
+    keyCell.setAttribute('id',val.toUpperCase());
     keyCell.innerText = val.toUpperCase();
     keyCell.addEventListener('click',(event)=>{
-    if(event.target.id === "del"){
-           if (i>0){ 
+    if(event.target.id === "DEL"){
+           if (i>0 && max === 5){ 
                     i--;
-                    boardContainer.children[i].innerText=" ";  
-             }
-            }else if(event.target.id === "enter"){
+                    boardContainer.children[i].innerText=" ";
+            }
+            }else if(event.target.id === "ENTER"){
                 if(i < max){
                     document.getElementById("game-over").style.display ="inline-block"
                         document.getElementById("game-over").textContent="Տառերի քանակը 5ից քիչ չի կարող լինել"
@@ -48,12 +48,14 @@ let isWin = false;
                 update();
                 gameOver();
                 
+                
             }else{
                 if(i<max){
                     boardContainer.children[i].innerText = event.target.id;
                     boardContainer.children[i].classList.add("k");
                     i++;
-                    checkkey(event.target);
+                  
+                  
                 }
             
             }       
@@ -62,22 +64,29 @@ let isWin = false;
        keyBoardContainer.appendChild(keyCell);
     })
 
-function update() {
-   
+function update() {  
    let counter = 0;
    document.querySelectorAll(".k").forEach((cell,j)=>{
         let letter = cell.innerText;
+        let key = document.getElementById(letter);
         if(i<max){
             if(letter === currentWord[j]){
                 cell.classList.add("board-cell-green");
-                cell.classList.remove("k");  
+                cell.classList.remove("k");
+                key.classList.add("board-cell-green");
                 counter ++;
             }else if(currentWord.includes(letter)){
                 cell.classList.add("board-cell-yellow");
                 cell.classList.remove("k");
-             
+                if(key.classList.contains("board-cell-yellow")){
+                    key.classList.add("board-cell-green");
+                }else{
+                    key.classList.add("board-cell-green");
+                }
+                          
             }else{
                 cell.classList.add("board-cell-grey");
+                key.classList.add("board-cell-grey");
                 cell.classList.remove("k")
             } 
         if(counter === currentWord.length){
@@ -86,23 +95,6 @@ function update() {
     }
   
     })
-}
-function checkkey(event){
-    let letter = event.id.toUpperCase();
-  
-    for(let j = 0; j < 5; j++ ){
-        if(letter === currentWord[j]){
-            event.classList.add("board-cell-green");
-          
-        }else if(currentWord.includes(letter)){
-            event.classList.add("board-cell-yellow");
-        }else{
-            event.classList.add("board-cell-grey");
-     
-        } 
-    }
-   
-
 }
 function gameOver(){
     if(isWin){
