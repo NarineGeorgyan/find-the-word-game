@@ -30,12 +30,10 @@ let isWin = false;
     keyCell.innerText = val.toUpperCase();
     keyCell.addEventListener('click',(event)=>{
     if(event.target.id === "DEL"){
-           if (i>0 && i===max){ 
+           if (i>0){ 
                     i--;
                     boardContainer.children[i].innerText=" ";
-                    
-                    console.log(boardContainer.children[i].replaceChild)
-
+            
             }
             }else if(event.target.id === "ENTER"){
                 if(i < max){
