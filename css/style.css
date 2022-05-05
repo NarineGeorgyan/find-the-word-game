@@ -161,15 +161,15 @@ header{
  
   
 }
-.btn-key:nth-child(14),
-.btn-key:nth-child(25){
+.btn-key:nth-child(16),
+.btn-key:nth-child(27){
     width: 110px;
    
 }
-.btn-key:nth-child(14){
+.btn-key:nth-child(16){
     margin-left: 80px;
 }
-.btn-key:nth-child(1),.btn-key:nth-child(26){
+.btn-key:nth-child(1),.btn-key:nth-child(28){
     margin-left: 70px;
 }
 .btn-key:hover{
