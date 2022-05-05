@@ -107,7 +107,7 @@ function update() {
 function gameOver(){
     if(isWin){
          document.getElementById("game-over").style.display ="inline-block"
-         document.getElementById("game-over").textContent="Congradulation!!! you are win"
+         document.getElementById("game-over").textContent="Շնորհաորում եմ դուք հաղթել եք"
     }
    if(!isWin && max>25){
     document.getElementById("game-over").style.display ="inline-block"
